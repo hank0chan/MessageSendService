@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MessageTemplate id="test">
 
-  <Project id="1" AppKey="23433960" Secret="cfd6792c840fd494511f4356e7eeb12f" Url="https://eco.taobao.com/router/rest">
+  <Project id="1" AppKey="23000000" Secret="xxxxx9xxx40fx4xxxxxf4xxxxxexxxxx" Url="https://eco.taobao.com/router/rest">
       <Message Type="1">
-          <SignName>瑜宸</SignName>      
-          <TemplateCode>SMS_13196600</TemplateCode>
+          <SignName>签名</SignName>      
+          <TemplateCode>SMS_00190000</TemplateCode>
           <SMSParam>{'msg':'value'}</SMSParam>          
       </Message>
       <Message Type="2">          
-          <TemplateCode>TTS_13220631</TemplateCode>
+          <TemplateCode>TTS_13000000</TemplateCode>
           <TTSParam>{'name':'value'}</TTSParam>          
           <CalledShowNums>051482043270,051482043271,051482043272,051482043273,051482043274</CalledShowNums>
       </Message>
@@ -16,7 +16,7 @@
   
   <Project id="2" AppKey="12344550" Secret="xyz6792x840xx494511x4356x7xyz12x" Url="https://eco.taobao.com/router/rest">
       <Message Type="1">
-          <SignName>瑜宸</SignName>      
+          <SignName>签名2</SignName>      
           <TemplateCode>SMS_11113333</TemplateCode>
           <SMSParam>{'message':'value'}</SMSParam>          
       </Message>
