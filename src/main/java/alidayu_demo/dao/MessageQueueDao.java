@@ -1,8 +1,6 @@
 package alidayu_demo.dao;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import alidayu_demo.dao.mybatis.MessageRepository;
 import alidayu_demo.entity.MessageQueue;
