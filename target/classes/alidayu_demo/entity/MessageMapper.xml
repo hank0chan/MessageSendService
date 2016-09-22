@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper SYSTEM "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="alidayu_demo.entity.MessageMapper">
+
+	<resultMap type="alidayu_demo.entity.Message" id="Message" autoMapping="true"/>
+	
+	<select id="get" resultMap="Message" parameterType="java.lang.String">
+		select * from t_sms_message where messageId = #{messageId}
+	</select>
+	
+	<select id="insert" resultMap="Message" parameterType="alidayu_demo.entity.Message">
+		INSERT INTO t_sms_message (MessageID, MessageType, MessageContent, RecNum, ProjectID, CreateTime) VALUES(#{messageId}, #{messageType}, #{messageContent}, #{recNum}, #{projectId}, #{createTime})
+	</select>
+	
+	<update id="update">
+		update t_sms_message
+		<set>
+			<if test="messageType != null">MessageType=#{messageType},</if>
+			<if test="messageContent != null">MessageContent=#{messageContent},</if>
+			<if test="recNum != null">RecNum=#{recNum},</if>
+			<if test="projectId != null">ProjectID=#{projectId},</if>
+			<if test="createTime != null">CreateTime=#{createTime}</if>
+		</set>
+		<!-- where MessageID=#{messageId} -->
+		<where>
+			<if test="messageId != null">MessageID=#{messageId}</if>
+			<if test="messageType != null">and MessageType=#{messageType}</if>
+		</where>
+	</update>
+	
+	<insert id="create">
+		insert into t_sms_message (MessageID, MessageType, MessageContent, RecNum, ProjectID, CreateTime) values(#{messageId}, #{messageType}, #{messageContent}, #{recNum}, #{projectId}, #{createTime})
+	</insert>
+	
+	<delete id="delete">
+		delete from t_sms_message 
+		<where>
+			<if test="messageId != null">MessageID = #{messageId}</if>
+			<if test="messageType != null">and MessageType = #{messageType}</if>
+		</where>
+	</delete>
+	
+</mapper>

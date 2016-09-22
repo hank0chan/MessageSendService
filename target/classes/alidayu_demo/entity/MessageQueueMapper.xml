@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper SYSTEM "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="alidayu_demo.entity.MessageQueueMapper">
+	
+	<resultMap type="alidayu_demo.entity.MessageQueue" id="MessageQueue" autoMapping="true" />
+	
+	<select id="get" resultMap="MessageQueue" parameterType="int">
+		select * from t_message_queue where MessageType = #{id} limit 1
+	</select>
+	
+	<select id="query" resultMap="MessageQueue" parameterType="int">
+		select * from t_message_queue where MessageType = #{id}
+	</select>
+	
+	<select id="queryByParams" resultMap="MessageQueue" parameterType="int">
+		select * from t_message_queue where MessageType = #{id} and ProjectID = #{projectId}
+	</select>
+	
+	<delete id="delete">
+		delete from t_message_queue where MessageID = #{messageId}
+	</delete>
+	
+	<select id="insert" resultMap="MessageQueue" parameterType="alidayu_demo.entity.MessageQueue">
+		replace into t_message_queue (MessageID, MessageType, RecNum, MessageContent, ProjectID) values(#{messageId}, #{messageType}, #{recNum}, #{messageContent}, #{projectId})
+	</select>
+	
+	<insert id="create">
+		insert into t_message_queue (MessageID, MessageType, RecNum, MessageContent, ProjectID) values(#{messageId}, #{messageType}, #{recNum}, #{messageContent}, #{projectId})
+	</insert>
+	
+</mapper>

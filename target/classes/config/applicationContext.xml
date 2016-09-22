@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- 直接将Repository使用set注入方式依赖到Service下 -->
+	<bean id="msgSendService" class="alidayu_demo.send.MsgSendService">
+		<property name="messageRepository" ref="messageRepository" />
+	</bean>
+	
+	<!-- 可以弃用：配置消息发送类及消息队列Dao类 MessageQueueDao 的 bean，并且注入属性 MessageRepository 用于执行 CRUD。
+	<bean id="msgSendService" class="alidayu_demo.send.MsgSendService">
+		<property name="messageQueueDao" ref="messageQueueDao" />
+	</bean>
+	<bean id="messageQueueDao" class="alidayu_demo.dao.MessageQueueDao">
+		<property name="messageRepository" ref="messageRepository" />
+	</bean> -->
+	
+	<!-- Repository类的bean：需要启动 MessageRepository 的初始化方法init()用于获取相应的 Mybatis 配置文件 -->
+	<bean id="messageRepository" class="alidayu_demo.dao.mybatis.MessageRepository" init-method="init"/>
+	
+</beans>

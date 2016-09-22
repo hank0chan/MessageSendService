@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper SYSTEM "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="alidayu_demo.entity.MessageDetailMapper">
+
+	<resultMap type="alidayu_demo.entity.MessageDetail" id="MessageDetail" autoMapping="true" />
+	
+	<insert id="create">
+		insert into t_sms_messagedetail
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="messageId != null">MessageID,</if>
+			<if test="recNum != null">RecNum,</if>
+			<if test="msgId != null">MsgID,</if>
+			<if test="messageType != null">MessageType,</if>
+			<if test="sendTime != null">SendTime,</if>
+			<if test="recTime != null">RecTime,</if>
+			<if test="state != null">State,</if>
+			<if test="sendTimes != null">SendTimes,</if>
+			<if test="maxSendTimes != null">MaxSendTimes,</if>
+			<if test="updateTime != null">UpdateTime,</if>
+			<if test="createTime != null">CreateTime,</if>
+		</trim>
+		<trim prefix="values(" suffix=")" suffixOverrides=",">
+			<if test="messageId != null">#{messageId},</if>
+			<if test="recNum != null">#{recNum},</if>
+			<if test="msgId != null">#{msgId},</if>
+			<if test="messageType != null">#{messageType},</if>
+			<if test="sendTime != null">#{sendTime},</if>
+			<if test="recTime != null">#{recTime},</if>
+			<if test="state != null">#{state},</if>
+			<if test="sendTimes != null">#{sendTimes},</if>
+			<if test="maxSendTimes != null">#{maxSendTimes},</if>
+			<if test="updateTime != null">#{updateTime},</if>
+			<if test="createTime != null">#{createTime},</if>
+		</trim>
+	</insert>
+	
+</mapper>
