@@ -7,6 +7,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import alidayu_demo.dao.mybatis.MessageRepository;
+import alidayu_demo.dao.mybatis.MybatisRepository;
 import alidayu_demo.entity.MessageQueue;
 
 public class TestDBConnection {
@@ -21,10 +22,13 @@ public class TestDBConnection {
 	}
 	
 	@Test
-	public void testDBCPorC3P0() {  // 无疾而终。。==failure
+	public void testDBCPorC3P0() {  // ==success
 		@SuppressWarnings("resource")
-		ApplicationContext xml = new ClassPathXmlApplicationContext("db2.properties");
+		ApplicationContext xml = new ClassPathXmlApplicationContext("config/applicationContext.xml");
 		DataSource dataSource = (DataSource) xml.getBean("dataSource");
 		System.out.println(dataSource);
+		MybatisRepository mybatisRepository = (MybatisRepository) xml.getBean("messageRepository");
+		System.out.println(mybatisRepository);
+		System.out.println(mybatisRepository.get_h("get", MessageQueue.class, 1));
 	}
 }

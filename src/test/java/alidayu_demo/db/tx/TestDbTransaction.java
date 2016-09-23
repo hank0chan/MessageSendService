@@ -2,8 +2,10 @@ package alidayu_demo.db.tx;
 
 import java.util.Date;
 
+import org.apache.ibatis.transaction.Transaction;
 import org.junit.Test;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
 
 import alidayu_demo.dao.mybatis.MessageRepository;
@@ -56,8 +58,8 @@ public class TestDbTransaction {
 		
 		TransactionDefinition transactionDefinition = null;
 		DataSourceTransactionManager dataSourceTransactionManager = null;
-		System.out.println(transactionDefinition + "......" + dataSourceTransactionManager);
-		
+		PlatformTransactionManager transactionManager = null;
+		System.out.println(transactionDefinition + "......" + dataSourceTransactionManager + "" +transactionManager);
 	}
 
 	
