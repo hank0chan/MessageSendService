@@ -3,6 +3,8 @@ package alidayu_demo.db.tx;
 import java.util.Date;
 
 import org.junit.Test;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.TransactionDefinition;
 
 import alidayu_demo.dao.mybatis.MessageRepository;
 import alidayu_demo.entity.Message;
@@ -52,6 +54,10 @@ public class TestDbTransaction {
 		detail.setUpdateTime(TimeUtils.YYYYMMDDHHMMSS.format(new Date()));
 		repository.create_h(detail);
 		
+		TransactionDefinition transactionDefinition = null;
+		DataSourceTransactionManager dataSourceTransactionManager = null;
 		
 	}
+
+	
 }
