@@ -4,28 +4,40 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-
+	
+	<!-- 配置注解开发方式 -->
+	<context:annotation-config/>
 	
 	<!-- 直接将Repository使用set注入方式依赖到Service下 -->
 	<bean id="msgSendService" class="alidayu_demo.send.MsgSendService">
 		<property name="messageRepository" ref="messageRepository" />
 	</bean>
-		
+	
 	<!-- Repository类的bean：需要启动 MessageRepository 的初始化方法init()用于获取相应的 Mybatis 配置文件 -->
 	<bean id="messageRepository" class="alidayu_demo.dao.mybatis.MessageRepository" init-method="init"/>
 	
 	
-	<!-- DBCP数据源配置测试，弃用
-	<context:property-placeholder location="classpath:db.properties" />
-	
+	<!-- C3P0数据源配置测试，弃用 ==failure
+	<context:property-placeholder location="classpath:db2.properties" />
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="jdbcUrl" value="${jdbc.url}"></property>
+		<property name="driverClass" value="${jdbc.driver}"></property>
+		<property name="user" value="${jdbc.username}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+	</bean> -->
+	<!-- DBCP数据源配置测试，弃用  ==failure
+	<context:property-placeholder location="classpath:db2.properties" />
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-		<property name="driverClassName" value="${DB_DRIVER}"></property>
-		<property name="url" value="${DB_URL}"></property>
-		<property name="password" value="${DB_PASSWORD}"></property>
-		<property name="username" value="${DB_USERNAME}"></property>
-	</bean> -->    
+		<property name="driverClassName" value="${jdbc.driver}"></property>
+		<property name="url" value="${jdbc.url}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+		<property name="username" value="${jdbc.username}"></property>
+	</bean>
+	<bean id="mybatisRepository" class="alidayu_demo.dao.mybatis.MybatisRepository">
+		<property name="dataSource" ref="dataSource" />
+	</bean>    -->
 
-	<!-- 可以弃用：配置消息发送类及消息队列Dao类 MessageQueueDao 的 bean，并且注入属性 MessageRepository 用于执行 CRUD。
+	<!-- 弃用：配置消息发送类及消息队列Dao类 MessageQueueDao 的 bean，并且注入属性 MessageRepository 用于执行 CRUD。
 	<bean id="msgSendService" class="alidayu_demo.send.MsgSendService">
 		<property name="messageQueueDao" ref="messageQueueDao" />
 	</bean>
