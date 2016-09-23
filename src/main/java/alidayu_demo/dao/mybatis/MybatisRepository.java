@@ -101,7 +101,7 @@ public abstract class MybatisRepository {
 		}
 	}
 	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-	
+	@Deprecated
 	public <T> Object execute(Class<T> resultClass, Excecution excecution) {
 		SqlSession session = sqlSessionFactory.openSession();
 		try {
@@ -117,40 +117,40 @@ public abstract class MybatisRepository {
 			session.close();
 		}
 	}
-	
+	@Deprecated
 	public <T> T create(T object) {
 		try(SqlSession session = sqlSessionFactory.openSession(true)) {
 			int n = session.insert(object.getClass().getName() + SUFFIX_MAPPER + ".create", object);
 			return n > 0 ? object : null;
 		}
 	}
-	
+	@Deprecated
 	public <T> T get(String verb, Class<T> resultClass, Object criteria) {
 		try(SqlSession session = sqlSessionFactory.openSession()) {
 			return session.selectOne(resultClass.getName() + SUFFIX_MAPPER + "." + verb, criteria);
 		}
 	}
-
-//	public <T> T get(Class<T> resultClass, Object criteria) {
-//		return get("get", resultClass, criteria);
-//	}
-
+	@Deprecated
+	public <T> T get(Class<T> resultClass, Object criteria) {
+		return get("get", resultClass, criteria);
+	}
+	@Deprecated
 	public <T> int count(Class<T> resultClass, Object criteria) {
 		try(SqlSession session = sqlSessionFactory.openSession()) {
 			return session.selectOne(resultClass.getName() + SUFFIX_MAPPER + ".count", criteria);
 		}
 	}
-
+	@Deprecated
 	public <T> List<T> query(String verb, Class<T> resultClass, Object criteria) {
 		try(SqlSession session = sqlSessionFactory.openSession()) {
 			return session.selectList(resultClass.getName() + SUFFIX_MAPPER + "." + verb, criteria);
 		}
 	}
-
+	@Deprecated
 	public <T> List<T> query(Class<T> resultClass, Object criteria) {
 		return query("query", resultClass, criteria);
 	}
-	
+	@Deprecated
 	public <T> int delete(Class<T> resultClass, Object criteria) {
 		try(SqlSession session = sqlSessionFactory.openSession(true)) {
 			return session.delete(resultClass.getName() + SUFFIX_MAPPER + ".delete", criteria);
@@ -178,6 +178,7 @@ public abstract class MybatisRepository {
 //		return new ResultSet<T>(session, cursor);
 //	}
 //
+	@Deprecated
 	public <T> T update(T object) {
 		try(SqlSession session = sqlSessionFactory.openSession(true)) {
 			int n = session.update(object.getClass().getName() + SUFFIX_MAPPER + ".update", object);
