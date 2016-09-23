@@ -15,14 +15,15 @@ public class TestDBConnection {
 	public void test() {  // ==success
 		MessageRepository repository = new MessageRepository();
 		repository.init();
-		MessageQueue queue = repository.get("get", MessageQueue.class, 1);
+//		MessageQueue queue = repository.get("get", MessageQueue.class, 1);
+		MessageQueue queue = repository.get_h("get", MessageQueue.class, 1);
 		System.out.println(queue);
 	}
 	
 	@Test
-	public void testDBCP() {  // 无疾而终。。==failure
+	public void testDBCPorC3P0() {  // 无疾而终。。==failure
 		@SuppressWarnings("resource")
-		ApplicationContext xml = new ClassPathXmlApplicationContext("db.properties");
+		ApplicationContext xml = new ClassPathXmlApplicationContext("db2.properties");
 		DataSource dataSource = (DataSource) xml.getBean("dataSource");
 		System.out.println(dataSource);
 	}

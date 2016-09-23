@@ -56,6 +56,7 @@ public class TestDbTransaction {
 		
 		TransactionDefinition transactionDefinition = null;
 		DataSourceTransactionManager dataSourceTransactionManager = null;
+		System.out.println(transactionDefinition + "......" + dataSourceTransactionManager);
 		
 	}
 

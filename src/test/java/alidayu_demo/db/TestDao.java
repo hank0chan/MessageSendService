@@ -9,6 +9,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import alidayu_demo.dao.MessageQueueDao;
 import alidayu_demo.entity.MessageQueue;
 
+@SuppressWarnings("deprecation")
 public class TestDao {
 
 	@Test
