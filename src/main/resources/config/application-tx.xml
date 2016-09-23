@@ -4,10 +4,13 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-		
-	<context:annotation-config/>
 	
-	<import resource="classpath:config/application-msg.xml"/>
-	<import resource="classpath:config/application-tx.xml"/>
+	<!-- 配置事务管理:激活@Transactional -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<bean id="transactionManager"  
+			class="org.springframework.jdbc.datasource.DataSourceTransactionManager"  
+			p:dataSource-ref="dataSource">
+		<qualifier value="afterCalledSendApi"></qualifier>
+	</bean>
 	
 </beans>
