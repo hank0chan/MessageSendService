@@ -86,11 +86,16 @@
         <dependency>  
             <groupId>commons-dbcp</groupId>  
             <artifactId>commons-dbcp</artifactId>  
-            <version>1.2.2</version>  
+            <version>1.4</version>  
         </dependency>  
+        <!-- <dependency>
+	   		<groupId>commons-pool</groupId>
+	    	<artifactId>commons-pool</artifactId>
+	    	<version>1.5.5</version>
+		</dependency> -->
 		<!-- 配置c3p0数据源的jar包 -->
 		<dependency>
-    	<groupId>c3p0</groupId>
+    		<groupId>c3p0</groupId>
     		<artifactId>c3p0</artifactId>
     		<version>0.9.1.2</version>
 		</dependency>
