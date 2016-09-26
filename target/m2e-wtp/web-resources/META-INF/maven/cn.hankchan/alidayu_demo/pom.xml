@@ -13,6 +13,13 @@
 	<spring.version>4.2.5.RELEASE</spring.version>
   </properties>
   <dependencies>
+  		<!-- Javax API的jar包 -->
+  		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
 		<!-- spring核心包 -->  
         <dependency>  
             <groupId>org.springframework</groupId>  
@@ -87,7 +94,7 @@
             <groupId>commons-dbcp</groupId>  
             <artifactId>commons-dbcp</artifactId>  
             <version>1.4</version>  
-        </dependency>  
+        </dependency>
         <!-- <dependency>
 	   		<groupId>commons-pool</groupId>
 	    	<artifactId>commons-pool</artifactId>
@@ -99,6 +106,22 @@
     		<artifactId>c3p0</artifactId>
     		<version>0.9.1.2</version>
 		</dependency>
+		<!-- Json必须包 -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.7.4</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-xml</artifactId>
+			<version>2.7.4</version>
+		</dependency>		
+		<dependency>
+			<groupId>javax.json</groupId>
+			<artifactId>javax.json-api</artifactId>
+			<version>1.0</version>
+		</dependency>
 		
 	    <dependency>
       		<groupId>junit</groupId>
@@ -106,6 +129,7 @@
       		<version>4.12</version>
       		<scope>test</scope>
     	</dependency>
+    	<!-- 文档对象模型jar -->
     	<dependency>
 			<groupId>dom4j</groupId>
 			<artifactId>dom4j</artifactId>

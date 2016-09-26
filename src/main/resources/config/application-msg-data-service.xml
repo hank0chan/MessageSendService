@@ -4,11 +4,10 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-		
-	<context:annotation-config/>
 	
-	<import resource="classpath:config/application-msg.xml"/>
-	<import resource="classpath:config/application-tx.xml"/>
-	<import resource="classpath:config/application-msg-data-service.xml"/>
+	<!-- 配置数据操作service层相关的bean -->
+	<bean id="messageQueueService" class="alidayu_demo.dataservice.MessageQueueService">
+		<property name="messageRepository" ref="messageRepository" />
+	</bean>
 	
 </beans>

@@ -9,5 +9,6 @@
 	
 	<import resource="classpath:config/application-msg.xml"/>
 	<import resource="classpath:config/application-tx.xml"/>
+	<import resource="classpath:config/application-msg-data-service.xml"/>
 	
 </beans>
